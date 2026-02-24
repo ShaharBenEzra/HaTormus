@@ -1,0 +1,43 @@
+.events-container {
+    background: white;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 450px;
+}
+
+.events-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.event-date {
+    background: #ebf5ff;
+    color: #3498db;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+}
+
+.event-date .day { font-size: 1.2rem; font-weight: 900; }
+.event-date .month { font-size: 0.75rem; }
+
+.event-info h4 { margin: 0; color: #2d3436; }
+.event-info p { margin: 2px 0 0 0; color: #a0a0a0; font-size: 0.8rem; }

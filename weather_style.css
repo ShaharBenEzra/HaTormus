@@ -1,0 +1,167 @@
+:root {
+    --primary-blue: #1d1e2c;
+    --accent-gold: #c59d08;
+    --chip-bg: #f8f1dc;
+    --border-color: #e0e0e0;
+    --text-muted: #888;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-color: #f0f2f5;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    direction: rtl; /* הוספתי כיוון כללי מימין לשמאל */
+}
+
+/* הקונטיינר הראשי */
+.weather-container {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    direction: rtl; /* מבטיח שכל האלמנטים יסתדרו מימין לשמאל */
+}
+
+/* צד ימין (היה צד שמאל): מיקום וטמפרטורה נוכחית */
+.current-weather-section {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-right: 1px solid var(--border-color); /* שונה מ-left ל-right */
+    padding-right: 10px; /* שונה מ-left ל-right */
+}
+
+.location-info {
+    text-align: right; /* שונה מ-left ל-right */
+}
+
+.project-name {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    margin: 2px 0;
+}
+
+.city-name { font-size: 14px; color: var(--text-muted); }
+.area-name { font-size: 12px; color: #bbb; }
+
+.current-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-temp {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    line-height: 1;
+}
+
+.main-icon {
+    font-size: 65px !important;
+    color: var(--accent-gold);
+}
+
+/* אמצע: תחזית שבועית */
+.forecast-section {
+    flex: 3;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.fc-day { font-size: 13px; font-weight: 700; color: #444; }
+.fc-icon { color: var(--accent-gold); font-size: 28px !important; }
+.fc-temp { font-size: 15px; font-weight: 700; color: var(--primary-blue); }
+
+/* צד שמאל (היה צד ימין): שעון ותאריך */
+.clock-section {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-time {
+    font-size: 68px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 0.9;
+}
+
+.date-chip {
+    background: var(--chip-bg);
+    color: var(--accent-gold);
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    display: inline-flex;
+    white-space: nowrap; 
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+}
+
+/* אופציונלי: עיצוב לתמונת בניין */
+.building-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-left: 15px; /* שונה מ-right ל-left */
+}
+
+/* YNET */
+.news-ticker {
+    margin-top: 20px;
+    background: var(--primary-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    direction: rtl;
+}
+
+.news-label {
+    background: red;
+    padding: 0 20px;
+    font-weight: 900;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.news-content {
+    white-space: nowrap;
+    padding-left: 20px; /* שונה מ-right ל-left */
+    animation: ticker 25s linear infinite;
+}
+
+/* תיקון כיוון האנימציה של החדשות כדי שיזרום נכון מימין לשמאל */
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}

@@ -1,0 +1,129 @@
+/* ריסעט והגדרות בסיס */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* המעטפת שמרכזת את הכל על המסך */
+.main-wrapper {
+    width: 100%;
+    max-width: 1300px; /* זה הרוחב המקסימלי שיקבע את הקו הישר */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 0 auto;
+}
+
+/* --- הגדרות רוחב זהות לשני המכלולים --- */
+.weather-container, 
+.unified-board {
+    width: 100%; /* שניהם יתפרסו על כל ה-1300px של ה-wrapper */
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* עיצוב ה-Header */
+.weather-container {
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* עיצוב הלוח המאוחד - 3 עמודות */
+.unified-board {
+    display: grid;
+    /* עמודה | מפריד | עמודה | מפריד | עמודה */
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 20px;
+    padding: 35px;
+    align-items: start;
+    min-height: 550px;
+}
+
+/* מפריד אנכי בין העמודות */
+.vertical-divider {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #eee, transparent);
+    align-self: stretch;
+}
+
+/* --- עמודה אמצעית: סטטוס בניין --- */
+.building-status-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.status-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.status-item-mini {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-right: 5px solid #ddd;
+}
+
+.status-item-mini.is-active {
+    background: #f0fff4;
+    border-right-color: #4caf50;
+}
+
+/* --- קודי QR מיושרים למרכז הרישום --- */
+.qr-container-mini {
+    margin-top: auto; /* מצמיד לתחתית העמודה */
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+}
+
+.qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.qr-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.qr-item img {
+    width: 85px;
+    height: 85px;
+    padding: 5px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 1100px) {
+    .unified-board {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .vertical-divider {
+        display: none;
+    }
+}

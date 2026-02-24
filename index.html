@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaTormus - Building Dashboard Pro</title>
+    <meta http-equiv="refresh" content="14400">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="main_style.css"> 
+    <link rel="stylesheet" href="weather_style.css"> 
+    <link rel="stylesheet" href="building-status.css">
+    <link rel="stylesheet" href="board-style.css">
+    <link rel="stylesheet" href="events-style.css">
+    <link rel="stylesheet" href="Ynet_style.css">
+</head> 
+
+<body>
+
+    <div class="main-wrapper">
+        
+        <header class="weather-container">
+            <div class="current-weather-section">
+                <div class="location-info">
+                    <div class="city-name">ראשון לציון</div>
+                    <div class="project-name">התורמוס 6</div>
+                    <div class="area-name">קריית ראשון</div>
+                </div>
+                <div class="current-main">
+                    <span id="main-weather-icon" class="material-symbols-outlined main-icon">wb_sunny</span>
+                    <span class="main-temp">15°</span>
+                </div>
+            </div>
+
+            <div id="forecast-container" class="forecast-section"></div>
+
+            <div class="clock-section">
+                <div id="time" class="big-time">17:10</div>
+                <div id="date" class="date-chip">יום שני, 23 בפברואר</div>
+            </div>
+        </header>
+
+<div class="middle-content">
+    <div class="unified-board">
+        
+        <section class="notices-section">
+            <div class="section-header">
+                <span class="material-symbols-outlined bell-icon">notifications</span>
+                <h2>הודעות ועד בית</h2>
+            </div>
+            <div class="notices-list">
+                <div class="notice-item active-notice">
+                    <h3>הודעות חשובות!</h3>
+                    <p>יש לנעול את דלתות הבניין בשעות הערב!!</p>
+                </div>
+                <div class="notice-item">
+                    <h3>תשלום ועד</h3>
+                    <p>תשלום ועד חודשי הינו 300 שקלים - יש להעבירו בתחילת כל חודש</p>
+                </div>
+                <div class="notice-item">
+                    <h3>אחר</h3>
+                    <p>נא לא להשאיר ציוד בלובי.</p>
+                </div>
+            </div>
+
+            <div class="qr-container-mini">
+                <div class="qr-item">
+                    <span class="qr-label">קבוצת וואטסאפ</span>
+                    <img src="Q1_whasapp_group.png" alt="WhatsApp">
+                </div>
+                <div class="qr-item">
+                    <span class="qr-label">תשלום ועד (Paybox)</span>
+                    <img src="Q2_paybox.png" alt="Paybox">
+                </div>
+            </div>
+        </section>
+
+        <div class="vertical-divider"></div>
+
+        <section class="events-section">
+            <div class="section-header">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <h2>מועדים ואירועים</h2>
+            </div>
+            <div class="events-list" id="holidays-list">
+                <p style="padding: 20px;">טוען מועדים...</p>
+            </div>
+        </section>
+
+        <div class="vertical-divider"></div>
+
+        <section class="building-status-section">
+            <div class="section-header">
+                <span class="material-symbols-outlined">info</span>
+                <h2>סטטוס בניין</h2>
+            </div>
+            <div class="status-column-wrapper">
+                <div class="status-item-mini">
+                    <div class="status-icon"><i class="fas fa-trash-alt"></i></div>
+                    <div class="status-info">
+                        <div class="status-label">פינוי אשפה</div>
+                        <div class="status-value">בימי ב'</div>
+                    </div>
+                </div>
+                <div class="status-item-mini is-active">
+                    <div class="status-icon"><i class="fas fa-arrow-up"></i></div>
+                    <div class="status-info">
+                        <div class="status-label">מעלית</div>
+                        <div class="status-value highlight">תקין</div>
+                    </div>
+                </div>
+                <div class="status-item-mini">
+                    <div class="status-icon"><i class="fas fa-broom"></i></div>
+                    <div class="status-info">
+                        <div class="status-label">ניקיון</div>
+                        <div class="status-value">בימים ב', ד', ו'</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+    </div> <footer class="news-bar">
+        <div class="logo-area">
+            <img src="https://ynet-pic1.yit.co.il/picserver5/wcm_upload/2024/07/09/B1LH3j5DR/new_logo_gif_ynet.gif" alt="ynet">
+        </div>
+        <div class="ticker-container">
+            <div id="status-msg">טוען כותרות...</div>
+            <div id="ticker" class="ticker-track"></div>
+        </div>
+    </footer>
+
+    <script src="weather_script.js"></script>
+    <script src="Ynet_script.js"></script>
+    <script src="Event_script.js"></script>
+</body>
+</html>
