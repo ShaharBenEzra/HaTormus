@@ -86,6 +86,16 @@ body {
     border-right-color: #4caf50;
 }
 
+.camera-warning {
+    color: #e53935; /* אדום ברור */
+    font-weight: 600;
+}
+
+.status-item-mini.camera-item .status-value.camera-warning {
+  color: #e53935 !important;
+  font-weight: 700;
+}
+
 /* --- קודי QR מיושרים למרכז הרישום --- */
 .qr-container-mini {
     margin-top: auto; /* מצמיד לתחתית העמודה */
