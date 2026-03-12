@@ -12,7 +12,7 @@ async function fetchHebrewHolidays() {
         // סינון מועדים עתידיים
         const upcoming = data.items
             .filter(item => new Date(item.date) >= now)
-            .slice(0, 5); 
+            .slice(0, 4); 
 
         container.innerHTML = ''; 
         upcoming.forEach(event => {
@@ -37,4 +37,5 @@ async function fetchHebrewHolidays() {
         container.innerHTML = '<p style="padding:15px;">שגיאה בטעינת מועדים</p>';
     }
 }
+
 document.addEventListener('DOMContentLoaded', fetchHebrewHolidays);
