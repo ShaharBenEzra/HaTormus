@@ -1,74 +1,98 @@
-/**
- * פונקציה למשיכת נתונים באמצעות פרוקסי חלופי (AllOrigins)
- * הפרוקסי הזה הרבה יותר אמין לעדכונים בזמן אמת
- */
+const RSS_URL = "https://www.ynet.co.il/Integration/StoryRss1854.xml";
+const PROXY_URL = url =>
+  `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+
+const STORAGE_KEY = "ynet-news-cache";
+
 async function fetchYnetNews() {
-    const statusMsg = document.getElementById('status-msg');
-    const RSS_URL = "https://www.ynet.co.il/Integration/StoryRss1854.xml";
-    
-    // שימוש בפרוקסי AllOrigins שמביא את המידע גולמי ללא Cache
-    const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(RSS_URL)}&_=` + new Date().getTime();
+
+    const statusMsg = document.getElementById("status-msg");
 
     try {
-        const response = await fetch(PROXY_URL);
-        if (!response.ok) throw new Error("Network response was not ok");
-        
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch(PROXY_URL(RSS_URL), {
+            signal: controller.signal
+        });
+
+        clearTimeout(timeout);
+
+        if (!response.ok) throw new Error("Network error");
+
         const data = await response.json();
-        
-        // המרת הטקסט הגולמי ל-XML
+
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+
         const items = Array.from(xmlDoc.querySelectorAll("item"));
 
-        if (items.length > 0) {
-            renderTicker(items);
-            if (statusMsg) statusMsg.style.display = 'none';
-        } else {
-            throw new Error("No items found");
-        }
+        if (!items.length) throw new Error("No items");
+
+        const parsedItems = items.slice(0, 15).map(item => {
+
+            const title = item.querySelector("title")?.textContent || "";
+            const link = item.querySelector("link")?.textContent || "#";
+            const pubDateStr = item.querySelector("pubDate")?.textContent || "";
+
+            const date = new Date(pubDateStr);
+
+            const timeStr = date.toLocaleTimeString("he-IL", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+                timeZone: "Asia/Jerusalem"
+            });
+
+            return { title, link, timeStr };
+
+        });
+
+        renderTicker(parsedItems);
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsedItems));
+
+        if (statusMsg) statusMsg.style.display = "none";
+
     } catch (error) {
-        console.error("Error fetching news:", error);
-        if (statusMsg) statusMsg.textContent = "שגיאה בטעינה...";
+
+        console.warn("YNET fetch failed → loading cache");
+
+        const cached = localStorage.getItem(STORAGE_KEY);
+
+        if (cached) {
+            renderTicker(JSON.parse(cached));
+        }
+
+        if (statusMsg) statusMsg.textContent = "טוען חדשות...";
     }
 }
 
-/**
- * עיבוד הנתונים מה-XML והזרקה ל-DOM
- */
 function renderTicker(items) {
-    const ticker = document.getElementById('ticker');
+
+    const ticker = document.getElementById("ticker");
     if (!ticker) return;
 
-    const newsHtml = items.slice(0, 15).map(item => {
-        const title = item.querySelector("title").textContent;
-        const link = item.querySelector("link").textContent;
-        const pubDateStr = item.querySelector("pubDate").textContent;
-
-        // טיפול ידני בשעה כדי למנוע סטיות UTC
-        const date = new Date(pubDateStr);
-        
-        // יצירת פורמט HH:mm מקומי לישראל
-        const timeStr = date.toLocaleTimeString('he-IL', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-            timeZone: 'Asia/Jerusalem'
-        });
+    const newsHtml = items.map(item => {
 
         return `
-            <a href="${link}" target="_blank" class="ticker-item">
-                <span class="ticker-time">${timeStr}</span>
-                <span class="ticker-title">${title}</span>
+            <a href="${item.link}" target="_blank" class="ticker-item">
+                <span class="ticker-time">${item.timeStr}</span>
+                <span class="ticker-title">${item.title}</span>
             </a>
             <span class="separator">•</span>
         `;
-    }).join('');
+
+    }).join("");
 
     ticker.innerHTML = newsHtml + newsHtml;
 }
 
-// הפעלה
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+
     fetchYnetNews();
-    setInterval(fetchYnetNews, 3 * 60 * 1000); // רענון כל 3 דקות
+
+    setInterval(fetchYnetNews, 10 * 60 * 1000);
+
 });
