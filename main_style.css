@@ -127,6 +127,23 @@ body {
     border-radius: 12px;
 }
 
+.unified-board {
+    position: relative;
+}
+
+.made-by {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    font-size: 11px;
+    color: #9aa3b2;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+}
+
+
+
+
 /* התאמה למסכים קטנים */
 @media (max-width: 1100px) {
     .unified-board {
