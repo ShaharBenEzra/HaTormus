@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="board-style.css">
     <link rel="stylesheet" href="events-style.css">
     <link rel="stylesheet" href="Ynet_style.css">
+    <!-- <link rel="stylesheet" href="dark_mode.css"> -->
 </head> 
 
 <body>
@@ -42,100 +43,103 @@
             </div>
         </header>
 
-<div class="middle-content">
-    <div class="unified-board">
-        
-        <section class="notices-section">
-            <div class="section-header">
-                <span class="material-symbols-outlined bell-icon">notifications</span>
-                <h2>הודעות ועד בית</h2>
-            </div>
-            <div class="notices-list">
-                <div class="notice-item active-notice">
-                    <h3>הודעות חשובות!</h3>
-                    <p>יש לנעול את דלתות הבניין בשעות הערב!!</p>
-                </div>
-                <div class="notice-item">
-                    <h3>תשלום ועד</h3>
-                    <p>תשלום ועד חודשי הינו 300 שקלים - יש להעבירו בתחילת כל חודש</p>
-                </div>
-                <div class="notice-item">
-                    <h3>אחר</h3>
-                    <p>נא לא להשאיר ציוד בלובי.</p>
-                </div>
-            </div>
-
-            <div class="qr-container-mini">
-                <div class="qr-item">
-                    <span class="qr-label">קבוצת וואטסאפ</span>
-                    <img src="Q1_whasapp_group.png" alt="WhatsApp">
-                </div>
-                <div class="qr-item">
-                    <span class="qr-label">תשלום ועד (Paybox)</span>
-                    <img src="Q2_paybox.png" alt="Paybox">
-                </div>
-            </div>
-        </section>
-
-        <div class="vertical-divider"></div>
-
-        <section class="events-section">
-            <div class="section-header">
-                <span class="material-symbols-outlined">calendar_month</span>
-                <h2>מועדים ואירועים</h2>
-            </div>
-            <div class="events-list" id="holidays-list">
-                <p style="padding: 20px;">טוען מועדים...</p>
-            </div>
-        </section>
-
-        <div class="vertical-divider"></div>
-
-        <section class="building-status-section">
-            <div class="section-header">
-                <span class="material-symbols-outlined">info</span>
-                <h2>סטטוס בניין</h2>
-            </div>
-            <div class="status-column-wrapper">
-                <div class="status-item-mini">
-                    <div class="status-icon"><i class="fas fa-trash-alt"></i></div>
-                    <div class="status-info">
-                        <div class="status-label">פינוי אשפה</div>
-                        <div class="status-value">בימי ב'</div>
+        <div class="middle-content">
+            <div class="unified-board">
+                
+                <section class="notices-section">
+                    <div class="section-header">
+                        <span class="material-symbols-outlined bell-icon">notifications</span>
+                        <h2>הודעות ועד בית</h2>
                     </div>
-                </div>
-                <div class="status-item-mini is-active">
-                    <div class="status-icon"><i class="fas fa-arrow-up"></i></div>
-                    <div class="status-info">
-                        <div class="status-label">מעלית</div>
-                        <div class="status-value highlight">תקין</div>
+                    <div class="notices-list">
+                        <div class="notice-item active-notice">
+                            <h3>הודעות חשובות!</h3>
+                            <p>יש לנעול את דלתות הבניין בשעות הערב!!</p>
+                        </div>
+                        <div class="notice-item">
+                            <h3>תשלום ועד</h3>
+                            <p>תשלום ועד חודשי הינו 300 שקלים - יש להעבירו בתחילת כל חודש</p>
+                        </div>
+                        <div class="notice-item">
+                            <h3>אחר</h3>
+                            <p>נא לא להשאיר ציוד בלובי.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="status-item-mini">
-                    <div class="status-icon"><i class="fas fa-broom"></i></div>
-                    <div class="status-info">
-                        <div class="status-label">ניקיון</div>
-                        <div class="status-value">בימים ב', ד', ו'</div>
-                    </div>
-                </div>
 
-                <div class="status-item-mini camera-item">
-                <div class="status-icon"><i class="fas fa-video"></i></div>
-                <div class="status-info">
-                    <div class="status-label">מצלמות</div>
-                    <div class="status-value camera-warning">
-                    הבניין מצולם 24/7 במצלמות במעגל פתוח
+                    <div class="qr-container-mini">
+                        <div class="qr-item">
+                            <span class="qr-label">קבוצת וואטסאפ</span>
+                            <img src="Q1_whasapp_group.png" alt="WhatsApp">
+                        </div>
+                        <div class="qr-item">
+                            <span class="qr-label">תשלום ועד (Paybox)</span>
+                            <img src="Q2_paybox.png" alt="Paybox">
+                        </div>
                     </div>
-                </div>
-                </div>
-</div>
+                </section>
+
+                <div class="vertical-divider"></div>
+
+                <section class="events-section">
+                    <div class="section-header">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <h2>מועדים ואירועים</h2>
+                    </div>
+                    <div class="events-list" id="holidays-list">
+                        <p style="padding: 20px;">טוען מועדים...</p>
+                    </div>
+                </section>
+
+                <div class="vertical-divider"></div>
+
+                <section class="building-status-section">
+                    <div class="section-header">
+                        <span class="material-symbols-outlined">info</span>
+                        <h2>סטטוס בניין</h2>
+                    </div>
+                    <div class="status-column-wrapper">
+                        <div class="status-item-mini">
+                            <div class="status-icon"><i class="fas fa-trash-alt"></i></div>
+                            <div class="status-info">
+                                <div class="status-label">פינוי אשפה</div>
+                                <div class="status-value">בימי ב'</div>
+                            </div>
+                        </div>
+                        <div class="status-item-mini is-active">
+                            <div class="status-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="status-info">
+                                <div class="status-label">מעלית</div>
+                                <div class="status-value highlight">תקין</div>
+                            </div>
+                        </div>
+                        <div class="status-item-mini">
+                            <div class="status-icon"><i class="fas fa-broom"></i></div>
+                            <div class="status-info">
+                                <div class="status-label">ניקיון</div>
+                                <div class="status-value">בימים ב', ד', ו'</div>
+                            </div>
+                        </div>
+
+                        <div class="status-item-mini camera-item">
+                            <div class="status-icon"><i class="fas fa-video"></i></div>
+                            <div class="status-info">
+                                <div class="status-label">מצלמות</div>
+                                <div class="status-value camera-warning">
+                                    הבניין מצולם 24/7 במצלמות במעגל פתוח
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="made-by">Made by ShaharBE</div>
+
             </div>
-        </section>
+        </div>
 
     </div>
-</div>
 
-    </div> <footer class="news-bar">
+    <footer class="news-bar">
         <div class="logo-area">
             <img src="https://ynet-pic1.yit.co.il/picserver5/wcm_upload/2024/07/09/B1LH3j5DR/new_logo_gif_ynet.gif" alt="ynet">
         </div>
@@ -148,5 +152,6 @@
     <script src="weather_script.js"></script>
     <script src="Ynet_script.js"></script>
     <script src="Event_script.js"></script>
+    <!-- <script src="dark_mode.js"></script> -->
 </body>
 </html>
