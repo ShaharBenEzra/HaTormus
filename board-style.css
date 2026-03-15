@@ -36,5 +36,5 @@
 }
 
 .qr-item { text-align: center; }
-.qr-item img { width: 80px; height: 80px; display: block; margin-bottom: 5px; }
+.qr-item img { width: 100px; height: 100px; display: block; margin-bottom: 5px; }
 .qr-item span { font-size: 0.8rem; font-weight: bold; }
